@@ -18,8 +18,8 @@ def doc_int(req: func.HttpRequest) -> func.HttpResponse:
     endpoint = os.environ["DOCUMENTINTELLIGENCE_ENDPOINT"]
     key = os.environ["DOCUMENTINTELLIGENCE_API_KEY"]
     connection_string = os.environ["AZURE_STORAGE_CONNECTION_STRING"]
-    container_name = "your-container-name"
-
+    container_name = os.environ["CONTAINER"]
+    
     document_intelligence_client = DocumentIntelligenceClient(endpoint=endpoint, credential=AzureKeyCredential(key))
     blob_service_client = BlobServiceClient.from_connection_string(connection_string)
     container_client = blob_service_client.get_container_client(container_name)
